@@ -60,18 +60,15 @@ struct BowlingGame {
         
         if frameIndex == 9 {
             if isStrike {
-                print("nullify is strike")
                 currentFrame.pins = 10
                 isStrike = false
             }
             
             let isSpare = rollIndex == 1 && currentFrame.pins == 0
             if isSpare && currentFrame.rolls.count <= 2 {
-                print("is spare! adding extra roll")
                 currentFrame.rolls += [0]
                 
                 if rollIndex < 3 {
-                    print("adding more pins")
                     currentFrame.pins = 10
                 }
             }
@@ -98,10 +95,24 @@ struct BowlingGame {
     
     mutating private func addBonuses(points: Int) -> Void {
         let previousFrameIndex = frameIndex - 1
-        let wasStrike = frame[previousFrameIndex].rolls[0] == 10
-        let wasSpare = frame[previousFrameIndex].rolls.reduce(0, +) == 10
-        if wasStrike || wasSpare {
-            frame[previousFrameIndex].bonusPoints = points
+        var wasStrike = frame[previousFrameIndex].rolls[0] == 10
+        let wasSpare = frame[previousFrameIndex].rolls.reduce(0, +) == 10 && frame[previousFrameIndex].rollCount == 2
+        
+        if (wasSpare && frame[previousFrameIndex].bonusPoints == 0){
+            frame[previousFrameIndex].bonusPoints += points
+        }
+        
+        if wasStrike && frame[frameIndex].rollCount < 2 {
+            frame[previousFrameIndex].bonusPoints += points
+        }
+        
+        if frameIndex - 2 >= 0 && frame[previousFrameIndex].rollCount < 2 && frame[frameIndex].rollCount < 1 {
+            let beforePreviousFrameIndex = frameIndex - 2
+            wasStrike = frame[beforePreviousFrameIndex].rolls[0] == 10
+            
+            if wasStrike  {
+                frame[beforePreviousFrameIndex].bonusPoints += points
+            }
         }
     }
 }

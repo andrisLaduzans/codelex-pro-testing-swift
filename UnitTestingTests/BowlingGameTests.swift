@@ -33,6 +33,60 @@ class BowlingGameTests: XCTestCase {
         XCTAssertEqual(error, expectedError, "Thrown error must be of type BowlingGameError")
     }
     
+    func test_add_bonus_points_with_spares() throws {
+        //1st frame
+        try bowlingGame.roll(pinsKnocked: 5)
+        try bowlingGame.roll(pinsKnocked: 5)
+        //2nd frame
+        try bowlingGame.roll(pinsKnocked: 3)
+        try bowlingGame.roll(pinsKnocked: 3)
+        //3rd frame
+        try bowlingGame.roll(pinsKnocked: 4)
+        
+        let expectedFrame: [BowlingGameFrameItem] = [
+            BowlingGameFrameItem(rolls: [5, 5], bonusPoints: 3, rollIndex: 2, pins: 0),
+            BowlingGameFrameItem(rolls: [3, 3], bonusPoints: 0, rollIndex: 2, pins: 4),
+            BowlingGameFrameItem(rolls: [4, 0], bonusPoints: 0, rollIndex: 1, pins: 6)
+        ]
+        
+        XCTAssertEqual(bowlingGame.frame, expectedFrame, "bonus from  spare should only occour once")
+    }
+    
+    func test_add_multiple_strike_bonuses() throws {
+        //1st frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        //2nd frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        //3rd frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        
+        let expectedFrame: [BowlingGameFrameItem] = [
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 20, rollIndex: 1, pins: 0),
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 10, rollIndex: 1, pins: 0),
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 0, rollIndex: 1, pins: 0)
+        ]
+        
+        XCTAssertEqual(bowlingGame.frame, expectedFrame, "bonuses should be added twice on next 2 rolls")
+    }
+    
+    func test_add_bonuses_after_strike() throws {
+        //1st frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        //2nd frame
+        try bowlingGame.roll(pinsKnocked: 5)
+        try bowlingGame.roll(pinsKnocked: 5)
+        //3rd frame
+        try bowlingGame.roll(pinsKnocked: 3)
+        
+        let expectedFrame: [BowlingGameFrameItem] = [
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 10, rollIndex: 1, pins: 0),
+            BowlingGameFrameItem(rolls: [5, 5], bonusPoints: 3, rollIndex: 2, pins: 0),
+            BowlingGameFrameItem(rolls: [3, 0], bonusPoints: 0, rollIndex: 1, pins: 7)
+        ]
+        
+        XCTAssertEqual(bowlingGame.frame, expectedFrame, "first strike should get bonus from next 2 rolls, next frame is spare so it gets bonus from 3rd frame")
+    }
+    
     func test_roll_spare_and_strike_combos() throws {
         //1st frame
         try bowlingGame.roll(pinsKnocked: 10)
@@ -40,24 +94,23 @@ class BowlingGameTests: XCTestCase {
         try bowlingGame.roll(pinsKnocked: 5)
         try bowlingGame.roll(pinsKnocked: 5)
         //3rd frame
-        try bowlingGame.roll(pinsKnocked: 0)
-        try bowlingGame.roll(pinsKnocked: 0)
+        try bowlingGame.roll(pinsKnocked: 10)
         //4th frame
         try bowlingGame.roll(pinsKnocked: 0)
-        try bowlingGame.roll(pinsKnocked: 10)
+        try bowlingGame.roll(pinsKnocked: 8)
         
         //5th frame
-        try bowlingGame.roll(pinsKnocked: 2)
+        try bowlingGame.roll(pinsKnocked: 1)
         
         let expectedFrame: [BowlingGameFrameItem] = [
-            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 5, rollIndex: 1, pins: Int(0)),
-            BowlingGameFrameItem(rolls: [5, 5], bonusPoints: 0, rollIndex: 2, pins: 0),
-            BowlingGameFrameItem(rolls: [0, 0], bonusPoints: 0, rollIndex: 2, pins: 10),
-            BowlingGameFrameItem(rolls: [0, 10], bonusPoints: 2, rollIndex: 2, pins: 0),
-            BowlingGameFrameItem(rolls: [2, 0], bonusPoints: 0, rollIndex: 1, pins: 8)
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 10, rollIndex: 1, pins: 0),
+            BowlingGameFrameItem(rolls: [5, 5], bonusPoints: 10, rollIndex: 2, pins: 0),
+            BowlingGameFrameItem(rolls: [10, 0], bonusPoints: 8, rollIndex: 1, pins: 0),
+            BowlingGameFrameItem(rolls: [0, 8], bonusPoints: 0, rollIndex: 2, pins: 2),
+            BowlingGameFrameItem(rolls: [1, 0], bonusPoints: 0, rollIndex: 1, pins: 9)
         ]
         
-        XCTAssertEqual(bowlingGame.frame[0], expectedFrame[0], "should calculate various spare/strike/regualar frame rolls")
+        XCTAssertEqual(bowlingGame.frame, expectedFrame, "should calculate various spare/strike/regualar frame rolls")
     }
     
     func playTillLastRound() throws -> [BowlingGameFrameItem] {
@@ -107,8 +160,6 @@ class BowlingGameTests: XCTestCase {
         //10frame 2nd roll
         try bowlingGame.roll(pinsKnocked: 10)
         expectedFrame[9] = BowlingGameFrameItem(rolls: [10, 10, 0], bonusPoints: 0, rollIndex: 2, pins: 10)
-        print("fr: \(bowlingGame.frame[9])")
-        print("ex: \(expectedFrame[9])")
         
         XCTAssertEqual(bowlingGame.frame, expectedFrame, "should get another another 3rd roll after second strike")
         XCTAssertEqual(bowlingGame.isGameOver, false, "game should not be over")
@@ -140,10 +191,35 @@ class BowlingGameTests: XCTestCase {
         for _ in 0..<12 {
             try bowlingGame.roll(pinsKnocked: 10)
         }
-        print("\(bowlingGame.frame)")
         
-        print("frameCount: \(bowlingGame.frameIndex)")
         XCTAssertEqual(bowlingGame.score(), 300, "perfect score result should be 300")
-        //    STRIKES ADD DOUBLE FOR NEXT 2 ROLLS!!!
+    }
+    
+    func test_score_mix_of_spares_and_strikes() throws {
+        //1st frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        //score: 10 + 3 + 7 = 20
+        //2nd frame
+        try bowlingGame.roll(pinsKnocked: 3)
+        try bowlingGame.roll(pinsKnocked: 7)
+        //score: 10 + 10 = 20
+        //3rd frame
+        try bowlingGame.roll(pinsKnocked: 10)
+        //score: 10 + 0 + 0 = 10
+        //4th frame
+        try bowlingGame.roll(pinsKnocked: 0)
+        try bowlingGame.roll(pinsKnocked: 0)
+        //score: 0
+        //total: 50
+        let expectedScore = 50
+        XCTAssertEqual(bowlingGame.score(), expectedScore)
+    }
+    
+    func test_score_if_spare_on_last_throw() throws {
+        for _ in 0..<21 {
+            try bowlingGame.roll(pinsKnocked: 5)
+        }
+        
+        XCTAssertEqual(bowlingGame.score(), 150, "each frame gets 10 points and spare of 5, 15 x 10 = 150")
     }
 }
