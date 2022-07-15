@@ -15,6 +15,8 @@
 		522549F8287F380300AB5D51 /* AccountStatementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522549F7287F380300AB5D51 /* AccountStatementTests.swift */; };
 		528B4AFC2880279000E6C1C1 /* BowlingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFB2880279000E6C1C1 /* BowlingGame.swift */; };
 		528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */; };
+		52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */; };
+		52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		522549F7287F380300AB5D51 /* AccountStatementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatementTests.swift; sourceTree = "<group>"; };
 		528B4AFB2880279000E6C1C1 /* BowlingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGame.swift; sourceTree = "<group>"; };
 		528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGameTests.swift; sourceTree = "<group>"; };
+		52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMaker.swift; sourceTree = "<group>"; };
+		52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMakerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 			children = (
 				522549F7287F380300AB5D51 /* AccountStatementTests.swift */,
 				528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */,
+				52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */,
 			);
 			path = UnitTestingTests;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			children = (
 				522549F5287F379A00AB5D51 /* AccountStatement.swift */,
 				528B4AFB2880279000E6C1C1 /* BowlingGame.swift */,
+				52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */,
 			);
 			path = Lesson01;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				528B4AFC2880279000E6C1C1 /* BowlingGame.swift in Sources */,
+				52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */,
 				520F1AB4287E0452004A4339 /* ContentView.swift in Sources */,
 				520F1AB2287E0452004A4339 /* UnitTestingApp.swift in Sources */,
 				522549F6287F379B00AB5D51 /* AccountStatement.swift in Sources */,
@@ -227,6 +234,7 @@
 			files = (
 				528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */,
 				522549F8287F380300AB5D51 /* AccountStatementTests.swift in Sources */,
+				52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
