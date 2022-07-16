@@ -130,6 +130,48 @@ class ChangeMakerTests: XCTestCase {
         XCTAssertEqual(coinsInMachine, expectedCoinsInMachine, "should reduce change amount after transaction")
     }
     
-    //TODO: test cases when some of the coins have run out
-    //TODO: test cases when total sum of change in machine is sufficient, but small value coins have run out, and exact return of change is impossible
+    func test_calculate_change_when_some_coins_have_run_out() throws {
+        //denominations: [1, 5, 10, 25]
+        var changeMaker = ChangeMaker(coinDenominations: .usDollar)
+        changeMaker.setCoins(coins: [
+            ChangeMakerCoin(value: 25, amount: 0),
+            ChangeMakerCoin(value: 10, amount: 10),
+            ChangeMakerCoin(value: 5, amount: 0),
+            ChangeMakerCoin(value: 1, amount: 10)
+        ])
+        //change sum: 1.6
+        let change: [Int] = try changeMaker.calculateChange(purchaseAmount: 1.43, tenderAmount: 2.0)
+        //change value: 0.57
+        let expectedChange:[Int] = [10, 10, 10, 10, 10, 1, 1, 1, 1, 1, 1, 1]
+        XCTAssertEqual(change, expectedChange, "should substitute with other value coins if other variant has been run out")
+    }
+    
+    func test_can_coin_stack_range_cover_certain_sum() {
+        let coinStack: [ChangeMakerCoin] = [
+            ChangeMakerCoin(value: 5, amount: 2),
+            ChangeMakerCoin(value: 1, amount: 2)
+        ]
+        XCTAssertTrue(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 10), "should check if certain range of coins can cover required amount")
+        XCTAssertTrue(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 12))
+        XCTAssertFalse(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 14))
+    }
+    
+    func test_thow_error_it_is_impossible_to_return_exact_amount_of_change() throws {
+        var changeMaker = ChangeMaker(coinDenominations: .usDollar)
+        changeMaker.setCoins(coins: [
+            ChangeMakerCoin(value: 25, amount: 10),
+            ChangeMakerCoin(value: 10, amount: 0),
+            ChangeMakerCoin(value: 5, amount: 1),
+            ChangeMakerCoin(value: 1, amount: 0)
+        ])
+        
+        let expectedError = ChangeMakerError.insufficientDenominationInMachine
+        var error: ChangeMakerError!
+        
+        XCTAssertThrowsError(try changeMaker.calculateChange(purchaseAmount: 1.90, tenderAmount: 2.0)) {
+            thrownError in
+            error = thrownError as? ChangeMakerError
+        }
+        XCTAssertEqual(error, expectedError, "should assess that it is impossible to return exact change even if the total amount of change is sufficient")
+    }
 }

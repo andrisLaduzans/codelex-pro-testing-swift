@@ -7,11 +7,11 @@
 /*
  Change Maker
  You need to write the software to calculate the minimum number of coins required to return an amount of change to a user of Acme Vending machines. For example, the vending machine has coins 1,2,5 and 10 what is the minimum number of coins required to make up the change of 43 cents?
-
+ 
  The coin denominations will be supplied as a parameter. This is so the algorithm is not specific to one country. You may not hardcode these into the algorithm, they must be passed as a parameter.
-
+ 
  The country’s denominations to use for the kata are:
-
+ 
  British Pound
  1,2,5,10,20,50
  US Dollar
@@ -19,7 +19,7 @@
  Norwegian Krone
  1,5,10,20
  The kata assumes an infinite number of coins of each denomination. You are to return an array with each coin to be given as change.
-
+ 
  Examples
  var coinDenominations = [1, 5, 10, 25]; // coin values converted to whole numbers
  var machine = new VendingMachine(coinDenominations);
@@ -64,7 +64,13 @@ struct ChangeMaker {
         var resultCoins: [Int] = []
         
         for (idx, coin) in coins.enumerated() {
-            let (count, spare) = calcCountAndSpare(number: requiredOnes, modulo: coin.value)
+            var (count, spare) = calcCountAndSpare(number: requiredOnes, modulo: coin.value)
+            if count > coin.amount {
+                if isOtherNominalsSufficient(coinStacks: Array(coins[idx..<coins.count]), requiredSum: requiredOnes) == false {
+                    throw ChangeMakerError.insufficientDenominationInMachine
+                }
+                count = 0
+            }
             let coinArr = Array(repeating: coin.value, count: count)
             resultCoins += coinArr
             requiredOnes -= coin.value * count
@@ -75,10 +81,6 @@ struct ChangeMaker {
             }
         }
         return resultCoins
-    }
-    
-    func getCoinReport() -> [ChangeMakerCoin] {
-        return coins
     }
     
     func calculateSpareSum(purchaseAmout: Double, tenderAmount: Double) throws -> Double {
@@ -122,6 +124,21 @@ struct ChangeMaker {
             spare: reminder
         )
     }
+    
+    func isOtherNominalsSufficient(coinStacks: [ChangeMakerCoin], requiredSum: Int) -> Bool {
+        let coinStacksValue: Int = coinStacks.reduce(0) {acc, coin in
+            return acc + (coin.value * coin.amount)
+        }
+        return coinStacksValue - requiredSum >= 0
+    }
+    
+    func getCoinReport() -> [ChangeMakerCoin] {
+        return coins
+    }
+    
+    mutating func setCoins(coins: [ChangeMakerCoin]) -> Void {
+        self.coins = coins
+    }
 }
 
 enum ChangeMakerDenomination {
@@ -158,4 +175,5 @@ struct ChangeMakerCoin: Equatable {
 enum ChangeMakerError: Error, Equatable {
     case insufficientTenderAmount(amountShort: Double)
     case insufficientChangeInMachine(missingAmount: Double)
+    case insufficientDenominationInMachine
 }
