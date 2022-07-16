@@ -63,15 +63,15 @@ class ChangeMakerTests: XCTestCase {
     }
     
     func test_calc_count_and_spare_of_modulo() {
-        var (count, spare) = changeMaker.calcCountAndSpare(number: 2, modulo: 3)
+        var (count, spare) = changeMaker.calcCountAndSpareModulo(number: 2, modulo: 3)
         XCTAssertEqual(count, 0)
         XCTAssertEqual(spare, 2)
         
-        (count, spare) = changeMaker.calcCountAndSpare(number: 200, modulo: 79)
+        (count, spare) = changeMaker.calcCountAndSpareModulo(number: 200, modulo: 79)
         XCTAssertEqual(count, 2)
         XCTAssertEqual(spare, 42)
         
-        (count, spare) = changeMaker.calcCountAndSpare(number: 2, modulo: 2)
+        (count, spare) = changeMaker.calcCountAndSpareModulo(number: 2, modulo: 2)
         XCTAssertEqual(count, 1)
         XCTAssertEqual(spare, 0)
     }
@@ -151,9 +151,9 @@ class ChangeMakerTests: XCTestCase {
             ChangeMakerCoin(value: 5, amount: 2),
             ChangeMakerCoin(value: 1, amount: 2)
         ]
-        XCTAssertTrue(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 10), "should check if certain range of coins can cover required amount")
-        XCTAssertTrue(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 12))
-        XCTAssertFalse(changeMaker.isOtherNominalsSufficient(coinStacks: coinStack, requiredSum: 14))
+        XCTAssertTrue(changeMaker.isRangeOfCoinsValueSufficient(coinStacks: coinStack, requiredSum: 10), "should check if certain range of coins can cover required amount")
+        XCTAssertTrue(changeMaker.isRangeOfCoinsValueSufficient(coinStacks: coinStack, requiredSum: 12))
+        XCTAssertFalse(changeMaker.isRangeOfCoinsValueSufficient(coinStacks: coinStack, requiredSum: 14))
     }
     
     func test_thow_error_it_is_impossible_to_return_exact_amount_of_change() throws {

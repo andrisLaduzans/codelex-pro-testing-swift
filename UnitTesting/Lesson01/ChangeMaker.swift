@@ -59,21 +59,25 @@ struct ChangeMaker {
         }
         
         let requiredSpare = try calculateSpareSum(purchaseAmout: purchaseAmount, tenderAmount: tenderAmount)
-        var requiredOnes: Int = Int(requiredSpare * 100)
+        var requiredCents: Int = Int(requiredSpare * 100)
         
         var resultCoins: [Int] = []
         
         for (idx, coin) in coins.enumerated() {
-            var (count, spare) = calcCountAndSpare(number: requiredOnes, modulo: coin.value)
+            var (count, spare) = calcCountAndSpareModulo(number: requiredCents, modulo: coin.value)
+            
             if count > coin.amount {
-                if isOtherNominalsSufficient(coinStacks: Array(coins[idx..<coins.count]), requiredSum: requiredOnes) == false {
+                if isRangeOfCoinsValueSufficient(
+                    coinStacks: Array(coins[idx..<coins.count]),
+                    requiredSum: requiredCents ) == false {
                     throw ChangeMakerError.insufficientDenominationInMachine
                 }
                 count = 0
             }
+            
             let coinArr = Array(repeating: coin.value, count: count)
             resultCoins += coinArr
-            requiredOnes -= coin.value * count
+            requiredCents -= coin.value * count
             coins[idx].amount -= count
             
             if spare == 0 {
@@ -105,7 +109,7 @@ struct ChangeMaker {
         return nil
     }
     
-    func calcCountAndSpare(number: Int, modulo: Int) -> (count: Int, spare: Int) {
+    func calcCountAndSpareModulo(number: Int, modulo: Int) -> (count: Int, spare: Int) {
         let quotient: Double = Double(number) / Double(modulo)
         
         if quotient < 1.0 {
@@ -125,7 +129,7 @@ struct ChangeMaker {
         )
     }
     
-    func isOtherNominalsSufficient(coinStacks: [ChangeMakerCoin], requiredSum: Int) -> Bool {
+    func isRangeOfCoinsValueSufficient(coinStacks: [ChangeMakerCoin], requiredSum: Int) -> Bool {
         let coinStacksValue: Int = coinStacks.reduce(0) {acc, coin in
             return acc + (coin.value * coin.amount)
         }
