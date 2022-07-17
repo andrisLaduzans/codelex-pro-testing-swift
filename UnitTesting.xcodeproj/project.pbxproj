@@ -17,6 +17,8 @@
 		528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */; };
 		52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */; };
 		52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */; };
+		52BF52E42882D1FB00A145AC /* MarsRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF52E32882D1FB00A145AC /* MarsRover.swift */; };
+		52BF52E62882E74500A145AC /* MarsRoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF52E52882E74500A145AC /* MarsRoverTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGameTests.swift; sourceTree = "<group>"; };
 		52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMaker.swift; sourceTree = "<group>"; };
 		52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMakerTests.swift; sourceTree = "<group>"; };
+		52BF52E32882D1FB00A145AC /* MarsRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRover.swift; sourceTree = "<group>"; };
+		52BF52E52882E74500A145AC /* MarsRoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				522549F7287F380300AB5D51 /* AccountStatementTests.swift */,
 				528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */,
 				52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */,
+				52BF52E52882E74500A145AC /* MarsRoverTests.swift */,
 			);
 			path = UnitTestingTests;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				522549F5287F379A00AB5D51 /* AccountStatement.swift */,
 				528B4AFB2880279000E6C1C1 /* BowlingGame.swift */,
 				52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */,
+				52BF52E32882D1FB00A145AC /* MarsRover.swift */,
 			);
 			path = Lesson01;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				528B4AFC2880279000E6C1C1 /* BowlingGame.swift in Sources */,
+				52BF52E42882D1FB00A145AC /* MarsRover.swift in Sources */,
 				52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */,
 				520F1AB4287E0452004A4339 /* ContentView.swift in Sources */,
 				520F1AB2287E0452004A4339 /* UnitTestingApp.swift in Sources */,
@@ -235,6 +242,7 @@
 				528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */,
 				522549F8287F380300AB5D51 /* AccountStatementTests.swift in Sources */,
 				52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */,
+				52BF52E62882E74500A145AC /* MarsRoverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
