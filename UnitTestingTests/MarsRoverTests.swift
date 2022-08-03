@@ -14,6 +14,14 @@ class MarsRoverTests: XCTestCase {
     override func setUp() {
         super.setUp()
         marsRover = MarsRover(point: MarsRoverPoint(x: 0, y: 0), direction: .E, grid: (100, 100))
+        do {
+            //override randomisation for obstacle generation on mars rover init
+            try marsRover.setObstacles(roverPosition: marsRover.point,
+                                   grid: marsRover.grid,
+                                   locations: [])
+        } catch {
+            print(error)
+        }
     }
     
     override func tearDown() {
