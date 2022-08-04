@@ -21,4 +21,17 @@ struct MetricConverter {
         let formatted = String(format: "%.8f", res)
         return Double(formatted)!
     }
+    
+    func litersToGalons(_ liters: Double, galonType: MetricConverterGalonType) -> Double {
+        if galonType == .uk {
+            return Double(String(format: "%.2f",(liters / 4.54609))) ?? 0
+        } else {
+            return Double(String(format: "%.2f", (liters / 3.785411784))) ?? 0
+        }
+    }
+}
+
+enum MetricConverterGalonType {
+    case uk
+    case us
 }

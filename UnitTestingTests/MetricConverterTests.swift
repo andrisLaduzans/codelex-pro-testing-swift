@@ -34,4 +34,9 @@ class MetricConverterTests: XCTestCase {
     func test_kg_to_pounds() {
         XCTAssertEqual(metricConverter.kgToPound(kg: 5), 11.02311311, "should be able to coonvert Kg to Pounds")
     }
+    
+    func test_liters_to_galons() {
+        XCTAssertEqual(metricConverter.litersToGalons(4.54609, galonType: .uk), 1)
+        XCTAssertEqual(metricConverter.litersToGalons(3.785411784, galonType: .us), 1)
+    }
 }
