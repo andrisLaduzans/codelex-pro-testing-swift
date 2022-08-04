@@ -17,6 +17,8 @@
 		5274FFD8289AF19100F34924 /* MetricConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274FFD7289AF19100F34924 /* MetricConverterTests.swift */; };
 		528B4AFC2880279000E6C1C1 /* BowlingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFB2880279000E6C1C1 /* BowlingGame.swift */; };
 		528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */; };
+		52A62C8F289C4A9D00AD749E /* Ohce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A62C8E289C4A9D00AD749E /* Ohce.swift */; };
+		52A62C91289C4AC200AD749E /* OhceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A62C90289C4AC200AD749E /* OhceTests.swift */; };
 		52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */; };
 		52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */; };
 		52BF52E42882D1FB00A145AC /* MarsRover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF52E32882D1FB00A145AC /* MarsRover.swift */; };
@@ -46,6 +48,8 @@
 		5274FFD7289AF19100F34924 /* MetricConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricConverterTests.swift; sourceTree = "<group>"; };
 		528B4AFB2880279000E6C1C1 /* BowlingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGame.swift; sourceTree = "<group>"; };
 		528B4AFD288027AC00E6C1C1 /* BowlingGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGameTests.swift; sourceTree = "<group>"; };
+		52A62C8E289C4A9D00AD749E /* Ohce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ohce.swift; sourceTree = "<group>"; };
+		52A62C90289C4AC200AD749E /* OhceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhceTests.swift; sourceTree = "<group>"; };
 		52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMaker.swift; sourceTree = "<group>"; };
 		52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMakerTests.swift; sourceTree = "<group>"; };
 		52BF52E32882D1FB00A145AC /* MarsRover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRover.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				52B05DD42881FDBF008BF5B3 /* ChangeMakerTests.swift */,
 				52BF52E52882E74500A145AC /* MarsRoverTests.swift */,
 				5274FFD7289AF19100F34924 /* MetricConverterTests.swift */,
+				52A62C90289C4AC200AD749E /* OhceTests.swift */,
 			);
 			path = UnitTestingTests;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */,
 				52BF52E32882D1FB00A145AC /* MarsRover.swift */,
 				5274FFD5289AF14700F34924 /* MetricConverter.swift */,
+				52A62C8E289C4A9D00AD749E /* Ohce.swift */,
 			);
 			path = Lesson01;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 				52BF52E42882D1FB00A145AC /* MarsRover.swift in Sources */,
 				52B05DD32881FC27008BF5B3 /* ChangeMaker.swift in Sources */,
 				520F1AB4287E0452004A4339 /* ContentView.swift in Sources */,
+				52A62C8F289C4A9D00AD749E /* Ohce.swift in Sources */,
 				520F1AB2287E0452004A4339 /* UnitTestingApp.swift in Sources */,
 				522549F6287F379B00AB5D51 /* AccountStatement.swift in Sources */,
 				5274FFD6289AF14700F34924 /* MetricConverter.swift in Sources */,
@@ -248,6 +255,7 @@
 			files = (
 				528B4AFE288027AC00E6C1C1 /* BowlingGameTests.swift in Sources */,
 				522549F8287F380300AB5D51 /* AccountStatementTests.swift in Sources */,
+				52A62C91289C4AC200AD749E /* OhceTests.swift in Sources */,
 				52B05DD52881FDBF008BF5B3 /* ChangeMakerTests.swift in Sources */,
 				5274FFD8289AF19100F34924 /* MetricConverterTests.swift in Sources */,
 				52BF52E62882E74500A145AC /* MarsRoverTests.swift in Sources */,
