@@ -22,6 +22,9 @@ class OhceTests: XCTestCase {
     }
     
     func test_ohce_can_greet(){
-        XCTAssertEqual(ohce.input("ohce Andris"), "¡Buenos días Andris!", "ohce should greet with user's name")
+        var response = ohce.input("ohce Andris");
+        XCTAssertEqual(response, "¡Buenos días Andris!", "ohce should greet with user's name")
+        response = ohce.input("ohce Lala");
+        XCTAssertEqual(response, "¡Buenos días Lala!")
     }
 }
