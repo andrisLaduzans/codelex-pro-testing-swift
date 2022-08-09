@@ -9,8 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                List {
+                    NavigationLink {
+                        OhceUI()
+                    } label: {
+                        Text("Ohce").font(.headline)
+                    }
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    VStack {
+                        Text("Unit testing mini projects").font(.title)
+                        
+                    }
+                    
+                }
+            }
+        }
     }
 }
 

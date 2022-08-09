@@ -13,6 +13,7 @@
 		520F1AB9287E0454004A4339 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520F1AB8287E0454004A4339 /* Preview Assets.xcassets */; };
 		522549F6287F379B00AB5D51 /* AccountStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522549F5287F379A00AB5D51 /* AccountStatement.swift */; };
 		522549F8287F380300AB5D51 /* AccountStatementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522549F7287F380300AB5D51 /* AccountStatementTests.swift */; };
+		525DEE1528A2C82000216A69 /* OhceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525DEE1428A2C82000216A69 /* OhceUI.swift */; };
 		5274FFD6289AF14700F34924 /* MetricConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274FFD5289AF14700F34924 /* MetricConverter.swift */; };
 		5274FFD8289AF19100F34924 /* MetricConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5274FFD7289AF19100F34924 /* MetricConverterTests.swift */; };
 		528B4AFC2880279000E6C1C1 /* BowlingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528B4AFB2880279000E6C1C1 /* BowlingGame.swift */; };
@@ -44,6 +45,7 @@
 		520F1ABE287E0454004A4339 /* UnitTestingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		522549F5287F379A00AB5D51 /* AccountStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatement.swift; sourceTree = "<group>"; };
 		522549F7287F380300AB5D51 /* AccountStatementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatementTests.swift; sourceTree = "<group>"; };
+		525DEE1428A2C82000216A69 /* OhceUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhceUI.swift; sourceTree = "<group>"; };
 		5274FFD5289AF14700F34924 /* MetricConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricConverter.swift; sourceTree = "<group>"; };
 		5274FFD7289AF19100F34924 /* MetricConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricConverterTests.swift; sourceTree = "<group>"; };
 		528B4AFB2880279000E6C1C1 /* BowlingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BowlingGame.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		520F1ADB287E0720004A4339 /* Lesson01 */ = {
 			isa = PBXGroup;
 			children = (
+				525DEE1328A2C80200216A69 /* UI */,
 				522549F5287F379A00AB5D51 /* AccountStatement.swift */,
 				528B4AFB2880279000E6C1C1 /* BowlingGame.swift */,
 				52B05DD22881FC27008BF5B3 /* ChangeMaker.swift */,
@@ -136,6 +139,14 @@
 				52A62C8E289C4A9D00AD749E /* Ohce.swift */,
 			);
 			path = Lesson01;
+			sourceTree = "<group>";
+		};
+		525DEE1328A2C80200216A69 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				525DEE1428A2C82000216A69 /* OhceUI.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				52A62C8F289C4A9D00AD749E /* Ohce.swift in Sources */,
 				520F1AB2287E0452004A4339 /* UnitTestingApp.swift in Sources */,
 				522549F6287F379B00AB5D51 /* AccountStatement.swift in Sources */,
+				525DEE1528A2C82000216A69 /* OhceUI.swift in Sources */,
 				5274FFD6289AF14700F34924 /* MetricConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
